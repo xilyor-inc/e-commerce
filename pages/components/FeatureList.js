@@ -1,62 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import styles from './FeatureList.module.css';
 
 const FeatureList = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const features = [
+    { id: 1, src: "/images/feature1.jpeg", alt: "feature1", text: "Feature 1" },
+    { id: 2, src: "/images/feature2.jpeg", alt: "feature2", text: "Feature 2" },
+    { id: 3, src: "/images/feature3.jpeg", alt: "feature3", text: "Feature 3" },
+    { id: 4, src: "/images/feature4.jpeg", alt: "feature4", text: "Feature 4" },
+    { id: 5, src: "/images/feature5.jpeg", alt: "feature5", text: "Feature 5" },
+    { id: 6, src: "/images/feature6.jpeg", alt: "feature6", text: "Feature 6" },
+    { id: 7, src: "/images/feature7.jpeg", alt: "feature7", text: "Feature 7" },
+    { id: 8, src: "/images/feature8.jpeg", alt: "feature8", text: "Feature 8" },
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % features.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + features.length) % features.length);
+  };
+
   return (
-    <div id="featureList" className="container my-5">
-      <div className="row justify-content-center align-items-center g-2">
-        <div className="col">
-          <div className="baslik d-flex justify-content-start align-items-end py-3">
-            <p className="h2 mx-5"><strong>Hepsiburada&apos;da herkes için ayrıcalık var</strong></p>
-          </div>
-          <div id="thumbnailCarousel" className="carousel slide">
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <div className="thumbnail text-center">
-                  <div className="thumb">
-                    <Image src="/images/feature1.jpeg" className="img-responsive img-thumbnail" alt="feature1" width={150} height={150} />
-                    <p>Feature 1</p>
-                  </div>
-                  <div className="thumb">
-                    <Image src="/images/feature2.jpeg" className="img-thumbnail" alt="feature2" width={150} height={150} />
-                    <p>Feature 2</p>
-                  </div>
-                  <div className="thumb">
-                    <Image src="/images/feature3.jpeg" className="img-thumbnail" alt="feature3" width={150} height={150} />
-                    <p>Feature 3</p>
-                  </div>
-                  <div className="thumb">
-                    <Image src="/images/feature4.jpeg" className="img-thumbnail" alt="feature4" width={150} height={150} />
-                    <p>Feature 4</p>
-                  </div>
-                  <div className="thumb">
-                    <Image src="/images/feature5.jpeg" className="img-thumbnail" alt="feature5" width={150} height={150} />
-                    <p>Feature 5</p>
-                  </div>
-                  <div className="thumb">
-                    <Image src="/images/feature6.jpeg" className="img-thumbnail" alt="feature6" width={150} height={150} />
-                    <p>Feature 6</p>
-                  </div>
-                  <div className="thumb">
-                    <Image src="/images/feature7.jpeg" className="img-thumbnail" alt="feature7" width={150} height={150} />
-                    <p>Feature 7</p>
-                  </div>
-                  <div className="thumb">
-                    <Image src="/images/feature8.jpeg" className="img-thumbnail" alt="feature8" width={150} height={150} />
-                    <p>Feature 8</p>
-                  </div>
-                </div>
+    <div className={styles.featureList}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>Hepsiburada&apos;da herkes için ayrıcalık var</h2>
+        <div className={styles.carousel}>
+          <div 
+            className={styles.carouselInner} 
+            style={{ transform: `translateX(-${currentSlide * (100 / features.length)}%)` }}
+          >
+            {features.map((feature) => (
+              <div key={feature.id} className={styles.feature}>
+                <Image 
+                  src={feature.src} 
+                  alt={feature.alt} 
+                  width={150} 
+                  height={150} 
+                  className={styles.image}
+                />
+                <p className={styles.featureText}>{feature.text}</p>
               </div>
-            </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#featureList" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon onceki" aria-hidden="true"></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#featureList" data-bs-slide="next">
-              <span className="carousel-control-next-icon sonraki" aria-hidden="true"></span>
-              <span className="visually-hidden">Next</span>
-            </button>
+            ))}
           </div>
+          <button className={`${styles.carouselControl} ${styles.prev}`} onClick={prevSlide}>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className={`${styles.carouselControl} ${styles.next}`} onClick={nextSlide}>
+            <span className="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
     </div>

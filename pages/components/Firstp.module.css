@@ -1,0 +1,62 @@
+.productDetails {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .leftColumn,
+  .rightColumn {
+    width: 100%;
+  }
+  
+  .carousel {
+    position: relative;
+  }
+  
+  .intelLogo {
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+  }
+  
+  .carouselIndicators {
+    display: flex;
+    overflow-x: auto;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .thumbnailCard {
+    flex: 0 0 auto;
+    margin-right: 0.5rem;
+  }
+  
+  .carouselImage {
+    max-height: 500px;
+    object-fit: contain;
+  }
+  
+  .productFeatures {
+    margin-top: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .leftColumn,
+    .rightColumn {
+      width: 50%;
+    }
+  
+    .carouselIndicators {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .productDetails {
+      padding: 2rem;
+    }
+  
+    .carouselImage {
+      max-height: 600px;
+    }
+  }

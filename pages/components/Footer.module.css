@@ -1,0 +1,113 @@
+.footer {
+    padding: 2rem 0;
+    background-color: #f8f9fa;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .logo {
+    /* Add logo styles */
+  }
+  
+  .headerLinks a {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .featureItem {
+    text-align: center;
+  }
+  
+  .featureItem h5 {
+    margin-bottom: 1rem;
+  }
+  
+  .divider {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 1px solid #e9ecef;
+  }
+  
+  .togglerSection {
+    margin-bottom: 2rem;
+  }
+  
+  .toggleButton {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1rem;
+  }
+  
+  .toggleContent {
+    margin-top: 1rem;
+  }
+  
+  .bottomMenuGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+  
+  .menuColumn {
+    /* Add styles for menu columns */
+  }
+  
+  .rightMenu {
+    /* Add styles for right menu */
+  }
+  
+  .footerEnd {
+    background-color: #e9ecef;
+    padding: 1rem 0;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .headerRow {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .headerLinks {
+      margin-top: 1rem;
+    }
+  
+    .headerLinks a {
+      display: block;
+      margin: 0.5rem 0;
+    }
+  
+    .featuresGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .bottomMenuGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .rightMenu {
+      grid-column: 1 / -1;
+    }
+  }

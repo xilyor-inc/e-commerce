@@ -1,0 +1,135 @@
+.dealOfTheDay {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .viewAll {
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .carousel {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .carouselInner {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .carouselItem {
+    flex: 0 0 100%;
+  }
+  
+  .dealArea {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .mainDeal {
+    flex: 1 1 200px;
+  }
+  
+  .deal {
+    flex: 1 1 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .dealTitle {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .image {
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .price {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .addToCart {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addToCart:hover {
+    background-color: #0056b3;
+  }
+  
+  .carouselControl {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .dealArea {
+      flex-direction: column;
+    }
+  
+    .mainDeal, .deal {
+      flex: 1 1 100%;
+    }
+  
+    .title {
+      font-size: 1.2rem;
+    }
+  
+    .viewAll {
+      font-size: 0.9rem;
+    }
+  
+    .dealTitle {
+      font-size: 0.8rem;
+    }
+  
+    .price {
+      font-size: 0.9rem;
+    }
+  
+    .addToCart {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
