@@ -11,13 +11,15 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "axios": "^1.7.3",
+    "axios": "^1.7.4",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "framer-motion": "^11.3.27",
     "next": "14.2.5",
     "react": "^18",
     "react-bootstrap": "^2.10.4",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-feather": "^2.0.10"
   },
   "devDependencies": {
     "eslint": "^8",

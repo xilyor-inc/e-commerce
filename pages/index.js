@@ -19,12 +19,12 @@ export default function Home() {
         
       </Head>
       <Header />
-      <Navbar />
+      {/* <Navbar /> */}
       <MainSlider />
       <DealOfTheDay />
-      <SfBanner />
+      {/* <SfBanner /> */}
       <ThumbnailSlider />
-      <FeatureList />
+      {/* <FeatureList /> */}
       <ReviewArea />
       <PreferredArea />
       <ProductArea />

@@ -55,7 +55,15 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      <div id="hr" className="row">
+        <div id="hr-col1" className="col-4">.</div>
+        <div id="hr-col2" className="col-2">.</div>
+        <div id="hr-col3" className="col-2">.</div>
+        <div id="hr-col4" className="col-2">.</div>
+        <div id="hr-col5" className="col-2">.</div>
     </div>
+    </div>
+    
   );
 };
 

@@ -1,0 +1,48 @@
+.darkBackground {
+    background-color: #282c34;
+}
+
+.productForm {
+    background-color: #333;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.productForm:hover {
+    transform: translateY(-5px);
+}
+
+.darkInput {
+    background-color: #444;
+    border-color: #555;
+    color: #fff;
+}
+
+.darkInput:focus {
+    background-color: #555;
+    border-color: #777;
+    color: #fff;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+.submitButton {
+    background: linear-gradient(45deg, #ff00ff, #00ff00);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submitButton:hover {
+    background: linear-gradient(45deg, #00ff00, #ff00ff);
+    color: white;
+}

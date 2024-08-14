@@ -11,16 +11,19 @@ import ReviewArea from './components/ReviewArea'
 import PreferredArea from './components/PreferredArea'
 import ProductArea from './components/ProductArea'
 import AdminAddProduct from './components/AdminAddProduct'
+import ProductManagement from './components/ProductManagement'
 export default function Home() {
   return (
     <Layout>
       <Head>
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"/>
         <title>Hepsiburada</title>
         
       </Head>
       <Header />
       <Navbar />
       <AdminAddProduct />
+      <ProductManagement />
     </Layout>
   )
 }

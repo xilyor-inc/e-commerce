@@ -1,163 +1,75 @@
 .header {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  .topLinks {
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainHeader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logoArea {
+  flex: 0 0 auto;
+}
+
+.searchArea {
+  flex: 1 1 auto;
+  margin: 0 20px;
+}
+
+.userActions {
+  display: flex;
+  align-items: center;
+}
+
+.mobileMenuToggle {
+  display: none;
+}
+
+.mobileNav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hideOnMobile {
     display: none;
   }
-  
-  .menuToggle {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  
-  .linksList {
-    display: none;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .linksList.open {
-    display: block;
-  }
-  
-  .linksList li {
-    margin: 0.5rem 0;
-  }
-  
-  .highlight {
-    color: #FF6000;
-  }
-  
-  .mainHeader {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 1rem 0;
-  }
-  
-  .logoArea {
-    flex: 1 1 100%;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-  
-  .premiumText {
-    font-size: 0.8rem;
-  }
-  
+
   .searchArea {
-    flex: 1 1 100%;
-    margin-bottom: 1rem;
+    order: -1;
+    width: 100%;
+    margin: 10px 0;
   }
-  
-  .searchInputGroup {
-    position: relative;
-    display: flex;
-  }
-  
-  .searchInput {
-    flex-grow: 1;
-    padding: 0.5rem 2rem 0.5rem 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .searchIcon {
-    position: absolute;
-    right: 0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .searchButton {
-    margin-left: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: #FF6000;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
+
   .userActions {
-    flex: 1 1 100%;
-    display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 100%;
   }
-  
-  .locationDropdown,
-  .userAccount,
-  .cartButton {
-    flex: 1;
-    text-align: center;
-    padding: 0.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .locationSubtext {
+
+  .mobileMenuToggle {
     display: block;
-    font-size: 0.8rem;
   }
-  
-  .cartBadge {
-    background-color: #FF6000;
-    color: white;
-    border-radius: 50%;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.8rem;
-    margin-left: 0.2rem;
+
+  .mobileNav {
+    display: none;
+    width: 100%;
   }
-  
-  @media (min-width: 768px) {
-    .topLinks {
-      display: block;
-    }
-  
-    .menuToggle {
-      display: none;
-    }
-  
-    .linksList {
-      display: flex;
-      justify-content: space-between;
-    }
-  
-    .linksList li {
-      margin: 0;
-    }
-  
-    .logoArea {
-      flex: 0 0 auto;
-      margin-bottom: 0;
-      text-align: left;
-    }
-  
-    .searchArea {
-      flex: 1 1 auto;
-      margin: 0 1rem;
-    }
-  
-    .userActions {
-      flex: 0 0 auto;
-    }
+
+  .mobileNav.open {
+    display: block;
   }
-  
-  @media (min-width: 1024px) {
-    .mainHeader {
-      flex-wrap: nowrap;
-    }
-  }
+}
+
+/* Add more specific styles as needed */

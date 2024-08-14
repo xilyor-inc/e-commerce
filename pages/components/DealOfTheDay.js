@@ -12,7 +12,7 @@ const DealOfTheDay = () => {
     const fetchProductsWithImages = async () => {
       try {
         console.log('Fetching products...');
-        const response = await fetch('http://127.0.0.1:3030/products');
+        const response = await fetch('http://smart.xilyor.com/products');
         console.log('Products response:', response);
         
         if (!response.ok) {
@@ -25,7 +25,7 @@ const DealOfTheDay = () => {
         // Fetch images for each product
         const productsWithImages = await Promise.all(productsData.map(async (product) => {
           console.log(`Fetching images for product ID: ${product.id}`);
-          const imageResponse = await fetch(`http://127.0.0.1:3030/product_images/${product.id}`);
+          const imageResponse = await fetch(`http://smart.xilyor.com/product_images/${product.id}`);
           if (imageResponse.ok) {
             const imageData = await imageResponse.json();
             console.log(`Image data for product ${product.id}:`, imageData);
