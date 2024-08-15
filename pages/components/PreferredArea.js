@@ -11,19 +11,20 @@ const PreferredArea = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get('http://your-api-endpoint/products');
-        setProducts(response.data);
-        setLoading(false);
-      } catch (err) {
-        setError('Failed to fetch products');
-        setLoading(false);
-      }
-    };
-
     fetchProducts();
   }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get('/api/products');
+      setProducts(response.data);
+      setLoading(false);
+    } catch (err) {
+      console.error('Error fetching products:', err);
+      setError('Failed to fetch products');
+      setLoading(false);
+    }
+  };
 
   const chunkArray = (arr, size) => {
     return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
@@ -31,7 +32,7 @@ const PreferredArea = () => {
     );
   };
 
-  const productChunks = chunkArray(products, 4); // Show 4 products per slide on desktop, adjust for mobile
+  const productChunks = chunkArray(products, 4);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -49,7 +50,13 @@ const PreferredArea = () => {
             <div className={`d-flex flex-wrap justify-content-around ${styles.productContainer}`}>
               {chunk.map((product) => (
                 <div key={product.id} className={`${styles.product} text-center`}>
-                  <Image src={product.image || "/images/placeholder.jpg"} className="img-fluid img-thumbnail" alt={product.name} width={150} height={150} />
+                  <Image 
+                    src={product.images?.image1 ? `data:image/jpeg;base64,${product.images.image1}` : "/images/placeholder.jpg"} 
+                    className="img-fluid img-thumbnail" 
+                    alt={product.name} 
+                    width={150} 
+                    height={150} 
+                  />
                   <small>{product.credit}</small>
                   <p className={styles.productName}>{product.name}</p>
                   <div className={styles.rating}>
@@ -59,7 +66,7 @@ const PreferredArea = () => {
                     <span>&nbsp;{product.reviewCount}</span>
                   </div>
                   <p className={`h6 ${styles.price}`}><strong>{product.price} TL</strong></p>
-                  <span className={styles.discount}>{product.discount}</span>
+                  <span className={styles.discount}>{product.discount_rate_display}% indirim</span>
                   <button className={styles.addToCart}>Sepete Ekle</button>
                 </div>
               ))}
