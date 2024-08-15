@@ -16,11 +16,27 @@ const PreferredArea = () => {
 
   const fetchProducts = async () => {
     try {
+<<<<<<< HEAD
       const response = await axios.get('/api/products');
       setProducts(response.data);
       setLoading(false);
     } catch (err) {
       console.error('Error fetching products:', err);
+=======
+      const response = await axios.get('http://smart.xilyor.com/products');
+      const productsWithImages = await Promise.all(response.data.map(async (product) => {
+        try {
+          const imageResponse = await axios.get(`http://smart.xilyor.com/product_images/${product.id}`);
+          return { ...product, images: imageResponse.data.images };
+        } catch (error) {
+          console.log(`No images found for product ${product.id}`);
+          return { ...product, images: null };
+        }
+      }));
+      setProducts(productsWithImages);
+      setLoading(false);
+    } catch (err) {
+>>>>>>> 3f85eb477103b72ecc8cb64566cb397150d70aa8
       setError('Failed to fetch products');
       setLoading(false);
     }
