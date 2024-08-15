@@ -1,0 +1,73 @@
+.mobileContainer {
+    max-width: 100%;
+    padding: 10px;
+    background-color: #f8f9fa;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .logo {
+    height: 30px;
+  }
+  
+  .menuButton, .cartButton {
+    background: none;
+    border: none;
+    font-size: 24px;
+  }
+  
+  .searchContainer {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+  }
+  
+  .searchButton {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ff6000;
+  }
+  
+  .featuredItem {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .brandsContainer {
+    margin-top: 20px;
+  }
+  
+  .brandScroll {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 0;
+  }
+  
+  .mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    z-index: 1000;
+    padding: 20px;
+  }

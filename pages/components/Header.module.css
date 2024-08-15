@@ -1,75 +1,88 @@
 .header {
-  width: 100%;
-  padding: 10px 20px;
+  padding: 10px 0;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+.topLinks {
+  font-size: 0.8rem;
+}
+
+.topLinks li {
+  margin-left: 15px;
+}
+
+.topLinks a {
+  text-decoration: none;
+  color: #333;
+  white-space: nowrap;
+}
+
+.logo {
+  /* Add your logo styles here */
+  margin-right: 10px;
+}
+
+.premiumText {
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.premiumText span {
+  font-weight: bold;
+}
+
+.locationDropdown button {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
-.mainHeader {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+.locationSubtext {
+  font-size: 0.8rem;
+  color: #FF6000;
+  margin-left: 5px;
 }
 
-.logoArea {
-  flex: 0 0 auto;
-}
-
-.searchArea {
-  flex: 1 1 auto;
-  margin: 0 20px;
-}
-
-.userActions {
+.userAccount {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
-.mobileMenuToggle {
-  display: none;
+.userAccount i {
+  font-size: 1.5rem;
+  margin-right: 5px;
 }
 
-.mobileNav {
-  display: none;
+.cartButton {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
-@media (max-width: 768px) {
-  .hideOnMobile {
-    display: none;
-  }
+.cartButton i {
+  margin-right: 5px;
+}
 
-  .searchArea {
-    order: -1;
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .userActions {
-    justify-content: space-around;
-    width: 100%;
-  }
-
-  .mobileMenuToggle {
-    display: block;
-  }
-
-  .mobileNav {
-    display: none;
-    width: 100%;
-  }
-
-  .mobileNav.open {
-    display: block;
+@media (max-width: 991px) {
+  .topLinks {
+      display: none;
   }
 }
 
-/* Add more specific styles as needed */
+@media (max-width: 767px) {
+  .header {
+      text-align: center;
+  }
+
+  .logo, .premiumText {
+      margin-bottom: 10px;
+  }
+
+  .locationDropdown,
+  .userAccount,
+  .cartButton {
+      margin: 5px;
+  }
+}

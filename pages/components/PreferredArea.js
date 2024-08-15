@@ -1,71 +1,72 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import axios from 'axios';
+import { Carousel } from 'react-bootstrap';
+import styles from './PreferredArea.module.css';
 
 const PreferredArea = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://your-api-endpoint/products');
+        setProducts(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to fetch products');
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const chunkArray = (arr, size) => {
+    return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+      arr.slice(i * size, i * size + size)
+    );
+  };
+
+  const productChunks = chunkArray(products, 4); // Show 4 products per slide on desktop, adjust for mobile
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
   return (
-    <div id="Preffer1" className="container my-5">
-      <div className="baslik d-flex justify-content-start align-items-end my-3">
-        <p className="h2 mx-5"><strong>Sana özel öneriler</strong></p>
-        <Link href="#" className="h6"><strong>Tümü &gt;</strong>
-        </Link>
+    <div id="Preffer1" className={`container my-5 ${styles.preferredArea}`}>
+      <div className={`d-flex justify-content-between align-items-center my-3 ${styles.header}`}>
+        <h2 className={styles.title}><strong>Sana özel öneriler</strong></h2>
+        <Link href="#" className={styles.viewAll}><strong>Tümü &gt;</strong></Link>
       </div>
-      <div id="prefferAreaCarousel" className="carousel slide px-5">
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <div className="dealoftheday-area d-flex">
-              {[1, 2, 3, 4, 5, 6, 7].map((item) => (
-                <div key={item} className="preffer text-center">
-                  <Image src="/images/dealoftheday2.jpg" className="img-fluid img-thumbnail" alt={`preffer${item}`} width={150} height={150} />
-                  <small>Kredi ile 12 taksit</small>
-                  <p>Acer Nitro AN515-58 Intel Core i7 12700H 16GB...</p>
-                  <div className="preffer-star">
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <span>&nbsp;205</span>
+      
+      <Carousel className={styles.carousel}>
+        {productChunks.map((chunk, index) => (
+          <Carousel.Item key={index}>
+            <div className={`d-flex flex-wrap justify-content-around ${styles.productContainer}`}>
+              {chunk.map((product) => (
+                <div key={product.id} className={`${styles.product} text-center`}>
+                  <Image src={product.image || "/images/placeholder.jpg"} className="img-fluid img-thumbnail" alt={product.name} width={150} height={150} />
+                  <small>{product.credit}</small>
+                  <p className={styles.productName}>{product.name}</p>
+                  <div className={styles.rating}>
+                    {[...Array(5)].map((_, i) => (
+                      <i key={i} className={`bi bi-star-fill ${i < product.rating ? styles.filled : ''}`}></i>
+                    ))}
+                    <span>&nbsp;{product.reviewCount}</span>
                   </div>
-                  <p className="h6"><strong>1544,99 TL</strong></p>
-                  <span className="indirim">Sepette %50 indirim</span>
-                  <span id="sepet2">Sepete Ekle</span>
+                  <p className={`h6 ${styles.price}`}><strong>{product.price} TL</strong></p>
+                  <span className={styles.discount}>{product.discount}</span>
+                  <button className={styles.addToCart}>Sepete Ekle</button>
                 </div>
               ))}
             </div>
-          </div>
-          <div className="carousel-item">
-            <div className="dealoftheday-area d-flex">
-              {[1, 2, 3, 4, 5, 6, 7].map((item) => (
-                <div key={item} className="preffer text-center">
-                  <Image src="/images/dealoftheday2.jpg" className="img-fluid img-thumbnail" alt={`preffer${item}`} width={150} height={150} />
-                  <small>Hemen Al Sonra Öde</small>
-                  <p>Acer Nitro AN515-58 Intel Core i7 12700H 16GB...</p>
-                  <div className="preffer-star">
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <i className="bi bi-star-fill"></i>
-                    <span>&nbsp;205</span>
-                  </div>
-                  <p className="h6"><strong>1544,99 TL</strong></p>
-                  <span className="indirim">Sepette %50 indirim</span>
-                  <span id="sepet2">Sepete Ekle</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <button className="carousel-control-prev" type="button" data-bs-target="#prefferAreaCarousel" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon onceki" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#prefferAreaCarousel" data-bs-slide="next">
-          <span className="carousel-control-next-icon sonraki" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
+          </Carousel.Item>
+        ))}
+      </Carousel>
     </div>
   );
 };
